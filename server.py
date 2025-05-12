@@ -10,6 +10,9 @@ def emot_detector():
 
     response = emotion_detector(text_to_analyze)
 
+    if response['dominant_emotion'] is None:
+        return "Invalid text! Please try again!"
+
     emotions_display = ', '.join(
         [f"'{emotion}': {score}" for emotion, score in response.items() if emotion != 'dominant_emotion']
     )
